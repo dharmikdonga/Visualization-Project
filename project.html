@@ -1,0 +1,1832 @@
+  <!doctype html>
+  <meta charset="utf-8">
+  <html lang="en">
+
+
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+
+  <head>
+    <title>Project</title>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <style>
+
+    circle{stroke: black; }
+    path {stroke: royalblue; fill:none;}
+    line {stroke: royalblue; fill:black;}
+    text {stroke: black; font-size:18px}
+    text {fill:#8966EF; }
+    path:hover {
+      fill-opacity: .7;
+    }
+    input[type=radio] {
+      width: 15px;
+      height: 15px;
+    }
+    input[type=radio]{
+      transform:scale(1.25);
+    }
+
+      input[type="radio"]:checked + label {
+      background-color:#EADF61;
+
+  }
+
+  .axes line{
+    stroke: #f7f7f7;
+  }
+  .axes path{
+    stroke: #f7f7f7;
+  }
+
+    </style>
+  </head>
+
+  <body>
+    <center>
+
+      <tr>
+
+      </div>
+    </tr>
+
+  <table>
+    <tr>
+      <td>
+          <b>Presentation</b>
+        </td>
+
+      </td>
+
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+
+
+      <td>
+    <b>Graphs respective to ethnicity</b>
+  </td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+
+  <td>
+      <b>Graphs respective to gender</b>
+    </td>
+    </tr>
+
+  <tr>
+
+    <td>
+      <input type="radio" id="slide0" name="button" value="slide0" oninput="start()">
+      <label for="slide0"> START</label><br>
+
+      <input type="radio" id="slide1" name="button" value="slide1" oninput="introduction()">
+      <label for="slide1"> Introduction and Motivation</label><br>
+
+      <input type="radio" id="slide2" name="button" value="slide2" oninput="datset()">
+      <label for="slide2"> Dataset</label><br>
+
+      <input type="radio" id="slide3" name="button" value="slide3" oninput="sol()">
+      <label for="slide3"> Visualization Techniques</label><br>
+
+      <input type="radio" id="slide4" name="button" value="slide4" oninput="future()">
+      <label for="slide4">Important Observations</label><br>
+    </td>
+
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+
+  <td>
+
+    <input type="radio" id="all" name="button" value="all" oninput="par()">
+    <label for="all"> Parallel Coordinates</label><br>
+
+    <input type="radio" id="asian" name="button" value="asian" oninput="asian()">
+    <label for="asian"> Graph for asian winners</label><br>
+
+    <input type="radio" id="black" name="button" value="black" oninput="black()">
+    <label for="black"> Graph for black winners</label><br>
+
+
+    <input type="radio" id="hispanic" name="button" value="hispanic" oninput="hispanic()">
+    <label for="hispanic"> Graph for hispanic winners</label><br>
+
+    <input type="radio" id="white" name="button" value="white" oninput="white()">
+    <label for="white"> Graph for white winners</label><br>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+
+
+  <td>
+
+
+    <input type="radio" id="male" name="button" value="male" oninput="male()">
+    <label for="male"> Graph for Male and Female winners</label><br>
+  </td>
+
+
+
+  </tr>
+
+  <tr>
+    <div id='svg' >
+    </div>
+  </tr>
+  <tr>
+  <td>
+  </center>
+    <div id='svg109' >
+    </div>
+  </td>
+
+  </tr>
+
+  </table>
+
+
+    <script>
+
+  function start()
+  {
+
+    d3.select("#svg100").remove();
+    d3.select("#svg2").remove();
+    d3.select("#svg3").remove();
+    d3.select("#svg4").remove();
+    d3.select("#svg10").remove();
+    d3.select("#svg5").remove();
+    d3.select("#svg7").remove();
+      d3.select("#svg6").remove();
+      d3.select("#svg604").remove();
+
+            d3.select("#svg600").remove();
+              d3.select("#svg601").remove();
+                d3.select("#svg602").remove();
+                  d3.select("#svg603").remove();
+
+                      d3.select("#svg605").remove();
+                        d3.select("#svg606").remove();
+
+                        d3.select("#svg801").remove();
+                        d3.select("#svg802").remove();
+                        d3.select("#svg803").remove();
+                        d3.select("#svg804").remove();
+    var chart= d3.select('#svg')
+    .append("svg")
+    .attr("id", "svg800")
+    .attr("width", 3400)
+    .attr("height", 1400)
+    .style("background", "#f7f7f7");
+
+    var legend_text_1=chart.append("text").attr("id", "text12").attr("font-family", "Apple-Chancery").attr("x",1000).attr("y",0).style("font-size", "180px").style("fill", "#C66316").style("stroke","red").text("Data Visualization Project")
+    var legend_text_2=chart.append("text").attr("x",2400).attr("y",1000).style("font-size", "40px").style("fill", "black").style("stroke","black").text("Dharmik Donga")
+    var legend_text_3=chart.append("text").attr("x",2420).attr("y",1035).style("font-size", "30px").style("fill", "black").style("stroke","black").text("(BlazerID: donga)")
+      var legend_text_4=chart.append("text").attr("x",800).attr("y",800).style("font-size", "80px").style("fill", "black").style("stroke","black").text("Visualizing Academy Awards Dataset")
+
+    d3.select("text")
+    .transition()
+    .duration(2900)
+    .style("fill", "#1B44A6")
+    .attr("x",485)
+    .attr("y",490)
+    .delay(function(d,i){ return(i*190)})
+
+      var myimage1 = chart.append('image').attr("id","im")
+        .attr('xlink:href', 'https://i.ibb.co/P5L78dw/Screenshot-2021-04-19-at-4-49-17-PM.png')
+        .attr("x",0)
+        .attr("y",1000)
+        .attr('width', 450)
+        .attr('height', 2000)
+
+        d3.select("image")
+        .transition()
+        .duration(2900)
+        .attr("x",0)
+        .attr("y",-310)
+        .delay(function(d,i){ return(i*190)})
+
+  }
+
+  function introduction()
+  {
+    d3.select("#svg100").remove();
+    d3.select("#svg2").remove();
+    d3.select("#svg3").remove();
+    d3.select("#svg4").remove();
+    d3.select("#svg10").remove();
+    d3.select("#svg5").remove();
+    d3.select("#svg7").remove();
+      d3.select("#svg6").remove();
+      d3.select("#svg604").remove();
+
+            d3.select("#svg600").remove();
+              d3.select("#svg601").remove();
+                d3.select("#svg602").remove();
+                  d3.select("#svg603").remove();
+
+                      d3.select("#svg605").remove();
+                        d3.select("#svg606").remove();
+
+                        d3.select("#svg800").remove();
+                        d3.select("#svg801").remove();
+                        d3.select("#svg802").remove();
+                        d3.select("#svg803").remove();
+
+    var chart= d3.select('#svg')
+    .append("svg")
+    .attr("id", "svg804")
+    .attr("width", 3400)
+    .attr("height", 1400)
+    .style("background", "#f7f7f7");
+
+    var legend_text_1=chart.append("text").attr("id", "text12").attr("x",1100).attr("y",150).style("font-size", "60px").style("fill", "black").style("stroke","black").text("Introduction and Motivation")
+    var legend_text_2=chart.append("text").attr("x",500).attr("y",300).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> Visualising Academy awards dataset also known as the Oscars.")
+    var legend_text_3=chart.append("text").attr("x",500).attr("y",355).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> #OscarsSoWhite started trending in 2015 and 2016, when all acting nominees were white; the hashtag nearly made a comeback last year.")
+    var legend_text_4=chart.append("text").attr("x",500).attr("y",410).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> In September, 2020 the Academy announced some new criteria for nominations, this was done to increrase the diversity in its nomination. ")
+    var legend_text_3=chart.append("text").attr("x",500).attr("y",465).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> The question is WHY??? Why such criteria was introduced? Is it actually required? How skewed is the diversity in Oscars? ")
+    var legend_text_3=chart.append("text").attr("x",500).attr("y",520).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> This project aims to answer all these questions")
+
+    var myimage = chart.append('image').attr("id","im")
+      .attr('xlink:href', 'https://i.ibb.co/fSSh3Th/Screenshot-2021-04-19-at-11-37-26-AM.png')
+      .attr("x",500)
+      .attr("y",600)
+      .attr('width', 500)
+      .attr('height', 500)
+
+      var myimage2 = chart.append('image').attr("id","im")
+        .attr('xlink:href', 'https://i.ibb.co/xJFbkqG/Screenshot-2021-04-19-at-11-37-05-AM.png')
+        .attr("x",1100)
+        .attr("y",350)
+        .attr('width', 500)
+        .attr('height', 1000)
+
+        var myimage3 = chart.append('image').attr("id","im")
+          .attr('xlink:href', 'https://i.ibb.co/JKfzQK3/Screenshot-2021-04-19-at-11-34-09-AM.png')
+          .attr("x",1700)
+          .attr("y",350)
+          .attr('width', 500)
+          .attr('height', 1000)
+
+  }
+
+  function datset()
+  {
+    d3.select("#svg100").remove();
+    d3.select("#svg2").remove();
+    d3.select("#svg3").remove();
+    d3.select("#svg4").remove();
+    d3.select("#svg10").remove();
+    d3.select("#svg5").remove();
+    d3.select("#svg7").remove();
+      d3.select("#svg6").remove();
+      d3.select("#svg604").remove();
+
+            d3.select("#svg600").remove();
+              d3.select("#svg601").remove();
+                d3.select("#svg602").remove();
+                  d3.select("#svg603").remove();
+
+                      d3.select("#svg605").remove();
+                        d3.select("#svg606").remove();
+
+                        d3.select("#svg800").remove();
+
+                        d3.select("#svg802").remove();
+                        d3.select("#svg803").remove();
+                        d3.select("#svg804").remove();
+    var chart= d3.select('#svg')
+    .append("svg")
+    .attr("id", "svg801")
+    .attr("width", 3400)
+    .attr("height", 1400)
+    .style("background", "#f7f7f7");
+
+    var legend_text_1=chart.append("text").attr("id", "text12").attr("x",1300).attr("y",150).style("font-size", "60px").style("fill", "black").style("stroke","black").text("Dataset")
+    var legend_text_2=chart.append("text").attr("x",500).attr("y",300).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> Basic Database from Kaggle ")
+    var legend_text_3=chart.append("text").attr("x",500).attr("y",355).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> Initially: 7 attributes, 10,389 entries. Data has all Oscar nominations and winners from 1928(inception) to 2020.")
+    var legend_text_4=chart.append("text").attr("x",500).attr("y",410).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> Attributes: Year_film, year_ceremony, ceremony_number, Category, Name, Film, Winner ")
+    var legend_text_5=chart.append("text").attr("x",500).attr("y",465).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> Data did not have the required attributes: Gender, Ethnicity. Which I manually added for all 10,389 entries. ")
+    var legend_text_6=chart.append("text").attr("x",500).attr("y",520).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> The final dataset has 4 attributes: Year, category, gender, ethnicity.")
+    var legend_text_7=chart.append("text").attr("x",500).attr("y",575).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> Visualizing techniques to be used took numeric attributes, hence converted all attributes to numeric attributes.")
+    var legend_text_8=chart.append("text").attr("x",500).attr("y",630).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> System could not handle 10,389 data entries, hence had to reduce it to 2358 data entries. Removed all nominations and only kept winners.")
+    var legend_text_9=chart.append("text").attr("x",500).attr("y",685).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> Final visualising only the Oscar winners from 1928 to 2020")
+
+    var myimage = chart.append('image').attr("id","im")
+      .attr('xlink:href', 'https://i.ibb.co/qrD70yj/Screenshot-2021-04-19-at-12-05-26-PM.png')
+      .attr("x",500)
+      .attr("y",-90)
+      .attr('width', 900)
+      .attr('height', 2000)
+
+        var myimage3 = chart.append('image').attr("id","im")
+          .attr('xlink:href', 'https://i.ibb.co/nB84H2s/Screenshot-2021-04-19-at-12-22-19-PM.png')
+          .attr("x",1800)
+          .attr("y",700)
+          .attr('width', 500)
+          .attr('height', 600)
+
+
+  }
+
+  function sol()
+  {
+    d3.select("#svg100").remove();
+    d3.select("#svg2").remove();
+    d3.select("#svg3").remove();
+    d3.select("#svg4").remove();
+    d3.select("#svg10").remove();
+    d3.select("#svg5").remove();
+    d3.select("#svg7").remove();
+      d3.select("#svg6").remove();
+      d3.select("#svg604").remove();
+
+            d3.select("#svg600").remove();
+              d3.select("#svg601").remove();
+                d3.select("#svg602").remove();
+                  d3.select("#svg603").remove();
+
+                      d3.select("#svg605").remove();
+                        d3.select("#svg606").remove();
+
+                        d3.select("#svg800").remove();
+                        d3.select("#svg801").remove();
+
+                        d3.select("#svg803").remove();
+                        d3.select("#svg804").remove();
+    var chart= d3.select('#svg')
+    .append("svg")
+    .attr("id", "svg802")
+    .attr("width", 3400)
+    .attr("height", 1400)
+    .style("background", "#f7f7f7");
+
+    var legend_text_1=chart.append("text").attr("id", "text12").attr("x",1000).attr("y",150).style("font-size", "60px").style("fill", "black").style("stroke","black").text("Visualization Techniques")
+    var legend_text_2=chart.append("text").attr("x",500).attr("y",300).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> Two d3.js techniques used")
+    var legend_text_3=chart.append("text").attr("x",500).attr("y",355).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> Parallel coordinate plot; Plots all four attributes together: Gender, Year, Ethnicity, Category.")
+    var legend_text_4=chart.append("text").attr("x",500).attr("y",410).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> Bar graph plot; Plots Year vs ethnicity and gender individually. Hence 4 plots for ethnicity and 1 plot for gender. ")
+
+  }
+
+
+  function future()
+  {
+    d3.select("#svg100").remove();
+    d3.select("#svg2").remove();
+    d3.select("#svg3").remove();
+    d3.select("#svg4").remove();
+    d3.select("#svg10").remove();
+    d3.select("#svg5").remove();
+    d3.select("#svg7").remove();
+      d3.select("#svg6").remove();
+      d3.select("#svg604").remove();
+
+            d3.select("#svg600").remove();
+              d3.select("#svg601").remove();
+                d3.select("#svg602").remove();
+                  d3.select("#svg603").remove();
+
+                      d3.select("#svg605").remove();
+                        d3.select("#svg606").remove();
+
+                        d3.select("#svg800").remove();
+                        d3.select("#svg801").remove();
+                        d3.select("#svg802").remove();
+
+                        d3.select("#svg804").remove();
+
+    var chart= d3.select('#svg')
+    .append("svg")
+    .attr("id", "svg803")
+    .attr("width", 3400)
+    .attr("height", 1400)
+    .style("background", "#f7f7f7");
+
+    var legend_text_1=chart.append("text").attr("id", "text12").attr("x",1200).attr("y",150).style("font-size", "60px").style("fill", "black").style("stroke","black").text("Important Observations")
+    var legend_text_2=chart.append("text").attr("x",150).attr("y",300).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> From parallel coordinates it is clearly visible that the lines emerging from ethnicity axis (for blacks, asians, hispanics) are more dense as year increases.")
+    var legend_text_3=chart.append("text").attr("x",150).attr("y",355).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> Bar graph for asian ethnicity shows that 1st asian artist to win an oscar was in 1955, 27 years after inception. After 2011 we see a consistency in number of asian artist winners.")
+    var legend_text_4=chart.append("text").attr("x",150).attr("y",410).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> Bar graph for black ethnicity shows that 1st black artist to win an oscar was in 1940, 12 years after inception. After 2012 we see a consistency in number of black artist winners. ")
+    var legend_text_5=chart.append("text").attr("x",150).attr("y",465).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> Bar graph for hispanic ethnicity shows that 1st hispanic artist to win an oscar was in 1945, 7 years after inception. After 2014 we see a consistency in number of hispanic artist winners. ")
+    var legend_text_6=chart.append("text").attr("x",150).attr("y",520).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> Bar graph for white ethnicity unlike other ethnicities shows a very even spread from inception to 2020, with consistent number of winners every year.")
+    var legend_text_7=chart.append("text").attr("x",150).attr("y",575).style("font-size", "35px").style("fill", "black").style("stroke","black").text("-> Parallel bar graph for male and female winners shows a very interesting pattern. Number of female winners remain consistent and low until 1976, after that the number of female winners increases.")
+
+
+  }
+
+    function par()
+    {
+
+      d3.select("#svg2").remove();
+      d3.select("#svg3").remove();
+      d3.select("#svg4").remove();
+      d3.select("#svg5").remove();
+      d3.select("#svg10").remove();
+      d3.select("#svg6").remove();
+      d3.select("#svg7").remove();
+      d3.select("#svg600").remove();
+        d3.select("#svg601").remove();
+          d3.select("#svg603").remove();
+              d3.select("#svg604").remove();
+                d3.select("#svg605").remove();
+                  d3.select("#svg602").remove();
+
+                    d3.select("#svg800").remove();
+                    d3.select("#svg801").remove();
+                    d3.select("#svg802").remove();
+                    d3.select("#svg803").remove();
+                  d3.select("#svg804").remove();
+
+
+
+                  var chart2= d3.select('#svg')
+                  .append("svg")
+                  .attr("id", "svg10")
+                  .attr("width", 300)
+                  .attr("height", 1550)
+                  .style("background", "#F5F5F5");
+
+                  var legend_text_1=chart2.append("text").attr("x",5).attr("y",250).style("font-size", "30px").style("fill", "black").style("stroke","black").text("Gender Legend")
+                  var legend_text_2=chart2.append("text").attr("x",50).attr("y",290).style("font-size", "30px").style("fill", "black").style("stroke","black").text(" 1: Male")
+                  var legend_text_3=chart2.append("text").attr("x",50).attr("y",320).style("font-size", "30px").style("fill", "black").style("stroke","black").text(" 2: Female")
+                  var legend_text_4=chart2.append("text").attr("x",5).attr("y",480).style("font-size", "30px").style("fill", "black").style("stroke","black").text("Ethnicity Legend")
+                  var legend_text_5=chart2.append("text").attr("x",50).attr("y",520).style("font-size", "30px").style("fill", "black").style("stroke","black").text("1: Asian")
+                  var legend_text_6=chart2.append("text").attr("x",50).attr("y",550).style("font-size", "30px").style("fill", "black").style("stroke","black").text("2: Black")
+                  var legend_text_7=chart2.append("text").attr("x",50).attr("y",580).style("font-size", "30px").style("fill", "black").style("stroke","black").text("3: Hispanic")
+
+
+      var chart= d3.select('#svg')
+      .append("svg")
+      .attr("id", "svg100")
+      .attr("width", 2500)
+      .attr("height", 1550)
+      .style("background", "#F5F5F5");
+
+
+
+
+
+      d3.csv("Actors.csv").then(function (data){
+
+
+        data.forEach(function(element)
+        {
+
+          element.Category = +element.Category;
+          element.Year = +element.Year;
+          element.Gender = +element.Gender;
+          element.Ethnicity = +element.Ethnicity;
+
+
+        });
+
+
+
+        var mapped_objects = data.map(function (entry){
+          return {
+
+            Gender: entry.Gender,
+              Year: entry.Year,
+            Ethnicity: entry.Ethnicity,
+            Category: entry.Category
+          };
+
+        });
+
+
+
+        coloumns = d3.keys(mapped_objects[0])
+
+        var len= coloumns.length;
+        var dimension_scale= {};
+
+
+
+
+        var i=0;
+        while (i<len)
+        {
+          name= coloumns[i]
+          var value_spread= d3.extent(mapped_objects, function(d) { return +d[name]; })
+          dimension_scale[name] = d3.scaleLinear()
+          .domain( value_spread )
+          .range([1500, 50])
+          i++;
+        }
+
+
+
+
+        x = d3.scalePoint()
+        .range([0, 700])
+        .padding(1)
+        .domain(coloumns);
+
+
+        position_scale = d3.scalePoint()
+        .domain(coloumns)
+        .range([50, 1800])
+
+        function path2(d) {
+          return d3.line()(coloumns.map(function(p) { return [0, 0]; }));
+        }
+
+
+
+        function path(d) {
+          return d3.line()(coloumns.map(function(p) { return [position_scale(p), dimension_scale[p](d[p])]; }));
+        }
+
+
+
+        chart.selectAll("path").data(mapped_objects)
+        .enter().append("path")
+        .attr("d", path2)
+        .style("stroke", "#84C980")
+        .style("opacity", 1)
+        .on("mouseover", mousein)
+        .on("mouseout", mouseout)
+
+        chart.selectAll("path")
+        .transition()
+        .duration(50)
+        .attr("fill", "red")
+        .attr("d", path)
+        .delay(function(d,i){ return(i*1)})
+
+
+
+
+        function mousein(d, i)
+        {
+          d3.select(this).style("stroke", "red").style("opacity", 40).style("stroke-width", 10)
+
+
+          var chart2= d3.select("#svg100")
+
+
+          var coordinates=chart2.append("text").style("fill", "red").style("font-size", "40px").attr('id', "k" + d.x  + d.y )
+          .attr('x', 1900)
+          .attr('y', 300)
+          .text("Year           :")
+
+          var coordinates=chart2.append("text").style("fill", "red").style("font-size", "40px").attr('id', "a" + d.x  + d.y )
+          .attr('x', 2080)
+          .attr('y', 300)
+          .text(function(data,i){return [d.Year];})
+
+  var a=1;
+  var b=2;
+  var c=3;
+  var e=4;
+
+  name_scale={
+    1: "Asian",
+    2: "Black",
+    3: "Hispanic",
+    4: "White"
+  }
+
+  category_scale={
+    1: "Actress in Supporting Role",
+    2: "Animated Feature Film",
+    3: "Art Direction(Black & White)",
+
+        4: "Art Direction(Color)",
+        5: "Assistant Director",
+        6: "Best Actor",
+        7: "Best Actor in Supporting Role",
+        8: "Best Actress",
+        9: "Best Picture",
+        10: "Cinematography",
+        11: "Costume Design",
+        12: "Costume Design(Black & white)",
+        13: "Costume Design(Color)",
+        14: "Dance Direction",
+        15: "Directing",
+        16: "Directing(Comedy Picture)",
+        17: "Directing(Dramatic Picture)",
+        18: "Documentry",
+        19: "Documentry(Feature)",
+        20: "Documentry(Short Subject)",
+        21: "Engineering Effects",
+        22: "Film Editing",
+        23: "Foreign Language",
+        24: "Honorary Award",
+        25: "Honorary Foreign Language Film",
+        26: "International Feature Film",
+        27: "Thalberg Memorial Award",
+        28: "Hersholt Humanitarian Award",
+        29: "Makeup",
+        30: "Makeup and Hairstyling",
+        31: "Music (Adaption Score)",
+        32: "Music Score of Dramatic or Comedy",
+        33: "Music Score Substantially Original",
+        34: "Music Original(Dramatic Score)",
+        35: "Music Original Song",
+        36: "Music(Adaptation)",
+        37: "Production Design",
+        38: "Short Film",
+        39: "Sound",
+        40: "Special Achievement Award",
+        41: "Visual Effects",
+        42: "Writing"
+
+
+  }
+
+
+          var coordinates=chart2.append("text").style("fill", "red").style("font-size", "40px").attr('id', "b" + d.x  + d.y )
+          .attr('x', 1900)
+          .attr('y', 340)
+          .text("Ethnicity:")
+
+
+          var coordinates=chart2.append("text").style("fill", "red").style("font-size", "40px").attr('id', "c" + d.x  + d.y )
+          .attr('x', 2080)
+          .attr('y', 340)
+
+          .text(function(data,i){return name_scale[d.Ethnicity];})
+
+
+
+
+          var coordinates=chart2.append("text").style("fill", "red").style("font-size", "40px").attr('id', "d" + d.x  + d.y )
+          .attr('x', 1900)
+          .attr('y', 380)
+          .text("Category:")
+
+          var coordinates=chart2.append("text").style("fill", "red").style("font-size", "40px").attr('id', "e" + d.x  + d.y )
+          .attr('x', 2080)
+          .attr('y',380)
+          .text(function(data,i){return category_scale[d.Category];})
+
+
+
+
+        }
+
+
+        function mouseout(d, i)
+        {
+          d3.select(this).style("stroke", "#69b3a2").style("opacity", 1).style("stroke-width", 1)
+          d3.select("#a" + d.x + d.y ).remove();
+          d3.select("#k" + d.x + d.y ).remove();
+          d3.select("#b" + d.x + d.y ).remove();
+          d3.select("#c" + d.x + d.y ).remove();
+          d3.select("#d" + d.x + d.y ).remove();
+          d3.select("#e" + d.x + d.y ).remove();
+        }
+
+        chart.selectAll("axis").data(coloumns).enter().append("g").attr("id", "axis100")
+
+        .attr("transform", function(d) { return "translate(" + position_scale(d) + ")"; })
+
+        .each(function(d) { d3.select(this).call(d3.axisLeft().scale(dimension_scale[d])); })
+        .append("text")
+        .attr("y", 40)
+        .attr("x", 10)
+        .text(function(d) { return d; })
+
+
+
+  })
+  }
+
+
+
+
+
+
+
+
+  </script>
+
+
+
+  <script>
+  function asian() {
+    d3.select("#svg100").remove();
+    d3.select("#svg3").remove();
+    d3.select("#svg4").remove();
+    d3.select("#svg5").remove();
+    d3.select("#svg10").remove();
+    d3.select("#svg6").remove();
+    d3.select("#svg7").remove();
+      d3.select("#svg800").remove();
+
+
+              d3.select("#svg601").remove();
+                d3.select("#svg602").remove();
+                  d3.select("#svg603").remove();
+                    d3.select("#svg604").remove();
+                      d3.select("#svg605").remove();
+                        d3.select("#svg606").remove();
+
+                        d3.select("#svg800").remove();
+                        d3.select("#svg801").remove();
+                        d3.select("#svg802").remove();
+                        d3.select("#svg803").remove();
+                        d3.select("#svg804").remove();
+
+
+
+    var chart= d3.select("#svg")
+    .append("svg")
+    .attr("id", "svg2")
+    .attr("width", 3200)
+    .attr("height", 1000)
+    .style("background", "#f7f7f7");
+
+    var chart109= d3.select("#svg")
+    .append("svg")
+    .attr("id", "svg600")
+    .attr("width", 3200)
+    .attr("height", 500)
+    .style("background", "#f7f7f7");
+
+    var myimage1 = chart109.append('image').attr("id","im")
+      .attr('xlink:href', 'https://i.ibb.co/XVBxx8x/MV5-BYWZj-Mjk3-ZTIt-ODQ2-ZC00-NTY5-LWE0-ZDYt-ZTI3-Mjcw-N2-Q5-NTVk-Xk-Ey-Xk-Fqc-Gde-QXVy-ODk4-OTc3-MT.jpg')
+      .attr("x",-160)
+      .attr("y",-120)
+      .attr('width', 1000)
+      .attr('height', 600)
+
+      var myimage2 = chart109.append('image').attr("id","im")
+        .attr('xlink:href', 'https://i.ibb.co/s5ZFYqt/ang-lee-jpg.webp')
+        .attr("x",560)
+        .attr("y",-30)
+        .attr('width', 800)
+        .attr('height', 500)
+
+        var myimage3 = chart109.append('image').attr("id","im")
+          .attr('xlink:href', 'https://i.ibb.co/1M1B8ZN/oscar-e1485309722105.jpg')
+          .attr("x",1420)
+          .attr("y",-800)
+          .attr('width', 600)
+          .attr('height', 2000)
+
+                var myimage4 = chart109.append('image').attr("id","im")
+                  .attr('xlink:href', 'https://i.ibb.co/SJ98XWV/90.jpg')
+                  .attr("x",2100)
+                  .attr("y",-300)
+                  .attr('width', 600)
+                  .attr('height', 1000)
+
+
+
+
+    d3.csv("barChart.csv").then(function(data)
+    {
+
+
+      data.forEach(function(element)
+      {
+
+        element.year = +element.year;
+        element.asian = +element.asian;
+
+      });
+
+      subgroup = d3.keys(data[0])
+      removed = subgroup.splice(0, 1)
+
+
+      group=d3.map(data, function(d){return(d.year)}).keys()
+
+
+      var xscale = d3.scaleBand()
+      .domain(group)
+      .range([80, 2800])
+
+      var yscale = d3.scaleLinear()
+      .domain([0, 7])
+      .range([ 1, 600]);
+
+      var yscale2 = d3.scaleLinear()
+      .domain([0, 7])
+      .range([ 600, 1]);
+
+      var yscale3 = d3.scaleLinear()
+      .domain([0, 15])
+      .range([ 40, 150]);
+
+      var xaxis = d3.axisBottom()
+      .scale(xscale);
+      xaxis.ticks(1)
+      chart.append("g")
+      .attr("transform", "translate(10,680)")
+      .call(xaxis);
+
+
+
+      var yaxis = d3.axisLeft()
+      .scale(yscale2);
+      yaxis.ticks(6)
+      chart.append("g")
+      .attr("transform", "translate(70,73)")
+      .call(yaxis)
+      .selectAll("text")
+        .attr("transform", "rotate(-90)")
+
+
+
+
+      var bars= chart.selectAll("rect").data(data)
+      bars.enter().append("rect").merge(bars)
+      .attr("x", function(d) { return xscale(d.year); })
+      .attr("y", 0)
+      .attr("width", 15)
+      .attr("height", 0)
+      .attr("fill", "black")
+      .on("mouseover", mousein)
+      .on("mouseout", mouseout)
+      chart.selectAll("text")
+      .attr("transform", "rotate(90)")
+      .attr("y", 15)
+      .attr("x", 10)
+      .style("text-anchor", "start");
+
+      var axis_name = chart.append("text").attr("x",1500).style("font-size", "30px").attr("y",780).text("Year")
+      var axis_name2 = chart.append("text").attr("x",240).attr("y",-10).style("font-size", "30px").attr("transform", " rotate(90)").text("Number of Winners");
+    var graph_name = chart.append("text").attr("x",100).style("font-size", "45px").style("fill", "red").attr("y",850).text("Graph for Asian winners")
+      chart.selectAll("rect")
+      .transition()
+      .duration(1200)
+      .attr("fill", "red")
+      .attr("y", function(d) { return 675-yscale(d.asian); })
+      .attr("height", function(d) { return yscale(d.asian); })
+      .delay(function(d,i){ return(i*5)})
+
+
+
+      function mouseout(d, i)
+      {
+        d3.select("#t" + d.year + d.asian).remove();
+        d3.select("#a" + d.year + d.asian).remove();
+        d3.select("#b" + d.year + d.asian).remove();
+        d3.select("#c" + d.year + d.asian).remove();
+        d3.select(this).attr('width', 15).attr("fill", "red")
+
+      }
+
+      function mousein(d, i)
+      {
+        d3.select(this).attr('width', 20).attr("fill", "blue")
+        var chart2= d3.select("#svg2")
+        var coordinates=chart2.append("text").attr('id', "t" + d.year  + d.asian).style("font-size", "40px")
+        .attr('x', 180)
+          .attr('y', 180)
+          .text("Year: ")
+
+
+
+            var coordinates=chart2.append("text").attr('id', "a" + d.year  + d.asian).style("font-size", "40px")
+            .attr('x', 280)
+            .attr('y', 180)
+            .text(function(data,i){return [d.year];})
+
+            var coordinates=chart2.append("text").attr('id', "b" + d.year  + d.asian).style("font-size", "40px")
+            .attr('x', 180)
+              .attr('y', 250)
+              .text("Number of Asian ethnicity winners: ")
+
+
+
+                var coordinates=chart2.append("text").attr('id', "c" + d.year  + d.asian).style("font-size", "40px")
+                .attr('x', 780)
+                .attr('y', 250)
+                .text(function(data,i){return [d.asian];})
+
+
+
+
+          }
+
+
+
+
+
+        })
+      }
+
+
+
+
+      function black() {
+        d3.select("#svg100").remove();
+        d3.select("#svg2").remove();
+        d3.select("#svg4").remove();
+        d3.select("#svg5").remove();
+        d3.select("#svg10").remove();
+        d3.select("#svg6").remove();
+        d3.select("#svg7").remove();
+        d3.select("#svg600").remove();
+          d3.select("#svg800").remove();
+
+                d3.select("#svg600").remove();
+
+                    d3.select("#svg602").remove();
+                      d3.select("#svg603").remove();
+                        d3.select("#svg604").remove();
+                          d3.select("#svg605").remove();
+                            d3.select("#svg606").remove();
+
+                            d3.select("#svg800").remove();
+                            d3.select("#svg801").remove();
+                            d3.select("#svg802").remove();
+                            d3.select("#svg803").remove();
+                            d3.select("#svg804").remove();
+
+        var chart= d3.select("#svg")
+        .append("svg")
+        .attr("id", "svg3")
+        .attr("width", 3200)
+        .attr("height", 1000)
+        .style("background", "#f7f7f7");
+
+        var chart109= d3.select("#svg")
+        .append("svg")
+        .attr("id", "svg601")
+        .attr("width", 3200)
+        .attr("height", 500)
+        .style("background", "#f7f7f7");
+
+        var myimage1 = chart109.append('image').attr("id","im")
+          .attr('xlink:href', 'https://i.ibb.co/R2261wP/image-jpg.webp')
+          .attr("x",-180)
+          .attr("y",-10)
+          .attr('width', 1000)
+          .attr('height', 450)
+
+          var myimage2 = chart109.append('image').attr("id","im")
+            .attr('xlink:href', 'https://i.ibb.co/z80whg4/black-actors-oscars.webp')
+            .attr("x",560)
+            .attr("y",-10)
+            .attr('width', 800)
+            .attr('height', 450)
+
+            var myimage3 = chart109.append('image').attr("id","im")
+              .attr('xlink:href', 'https://i.ibb.co/v4fJH15/jordan-peele-oscars-win-jpg.webp')
+              .attr("x",1400)
+              .attr("y",-130)
+              .attr('width', 600)
+              .attr('height', 680)
+
+                    var myimage4 = chart109.append('image').attr("id","im")
+                      .attr('xlink:href', 'https://i.ibb.co/7thYKmS/oscars-1200x800-jpg.webp')
+                      .attr("x",2100)
+                      .attr("y",-100)
+                      .attr('width', 600)
+                      .attr('height', 690)
+
+        d3.csv("barChart.csv").then(function(data)
+        {
+
+
+          data.forEach(function(element)
+          {
+
+            element.year = +element.year;
+            element.black = +element.black;
+
+          });
+
+          subgroup = d3.keys(data[0])
+          removed = subgroup.splice(0, 1)
+
+
+          group=d3.map(data, function(d){return(d.year)}).keys()
+
+
+          var xscale = d3.scaleBand()
+          .domain(group)
+          .range([80, 2800])
+
+          var yscale = d3.scaleLinear()
+          .domain([0, 7])
+          .range([ 1, 600]);
+
+          var yscale2 = d3.scaleLinear()
+          .domain([0, 7])
+          .range([ 600, 1]);
+
+          var xaxis = d3.axisBottom()
+          .scale(xscale);
+          xaxis.ticks(1)
+          chart.append("g")
+          .attr("transform", "translate(10,680)")
+          .call(xaxis);
+
+
+
+          var yaxis = d3.axisLeft()
+          .scale(yscale2);
+          yaxis.ticks(8)
+          chart.append("g")
+          .attr("transform", "translate(70,73)")
+          .call(yaxis);
+
+
+
+          var bars= chart.selectAll("rect").data(data)
+          bars.enter().append("rect").merge(bars)
+          .attr("x", function(d) { return xscale(d.year); })
+          .attr("y", 0)
+          .attr("width", 15)
+          .attr("height", 0)
+          .attr("fill", "black")
+          .on("mouseover", mousein)
+          .on("mouseout", mouseout)
+          chart.selectAll("text")
+          .attr("transform", "rotate(90)")
+          .attr("y", 15)
+          .attr("x", 10)
+          .style("text-anchor", "start");
+          var axis_name = chart.append("text").attr("x",1500).style("font-size", "30px").attr("y",780).text("Year")
+          var axis_name2 = chart.append("text").attr("x",240).attr("y",-10).style("font-size", "30px").attr("transform", " rotate(90)").text("Number of Winners");
+          var graph_name = chart.append("text").attr("x",100).style("font-size", "45px").style("fill", "red").attr("y",850).text("Graph for Black winners")
+
+          chart.selectAll("rect")
+          .transition()
+          .duration(1200)
+          .attr("fill", "red")
+          .attr("y", function(d) { return 675-yscale(d.black); })
+          .attr("height", function(d) { return yscale(d.black); })
+          .delay(function(d,i){ return(i*5)})
+
+
+          function mouseout(d, i)
+          {
+            d3.select("#t" + d.year + d.black).remove();
+            d3.select("#a" + d.year + d.black).remove();
+            d3.select("#b" + d.year + d.black).remove();
+            d3.select("#c" + d.year + d.black).remove();
+            d3.select(this).attr('width', 15).attr("fill", "red")
+
+          }
+
+          function mousein(d, i)
+          {
+            d3.select(this).attr('width', 20).attr("fill", "blue")
+            var chart2= d3.select("#svg3")
+            var coordinates=chart2.append("text").attr('id', "t" + d.year  + d.black).style("font-size", "40px")
+            .attr('x', 180)
+              .attr('y', 180)
+              .text("Year: ")
+
+
+
+                var coordinates=chart2.append("text").attr('id', "a" + d.year  + d.black).style("font-size", "40px")
+                .attr('x', 280)
+                .attr('y', 180)
+                .text(function(data,i){return [d.year];})
+
+                var coordinates=chart2.append("text").attr('id', "b" + d.year  + d.black).style("font-size", "40px")
+                .attr('x', 180)
+                  .attr('y', 250)
+                  .text("Number of Black ethnicity winners: ")
+
+
+
+                    var coordinates=chart2.append("text").attr('id', "c" + d.year  + d.black).style("font-size", "40px")
+                    .attr('x', 780)
+                    .attr('y', 250)
+                    .text(function(data,i){return [d.black];})
+
+              }
+
+
+
+
+        })
+      }
+
+
+
+      function hispanic() {
+        d3.select("#svg100").remove();
+        d3.select("#svg2").remove();
+        d3.select("#svg3").remove();
+        d3.select("#svg5").remove();
+        d3.select("#svg10").remove();
+        d3.select("#svg6").remove();
+        d3.select("#svg7").remove();
+          d3.select("#svg800").remove();
+
+                d3.select("#svg600").remove();
+                  d3.select("#svg601").remove();
+
+                    d3.select("#svg603").remove();
+                        d3.select("#svg604").remove();
+                          d3.select("#svg605").remove();
+                            d3.select("#svg606").remove();
+
+                            d3.select("#svg800").remove();
+                            d3.select("#svg801").remove();
+                            d3.select("#svg802").remove();
+                            d3.select("#svg803").remove();
+                            d3.select("#svg804").remove();
+
+
+
+
+        var chart= d3.select("#svg")
+        .append("svg")
+        .attr("id", "svg4")
+        .attr("width", 3200)
+        .attr("height", 1000)
+        .style("background", "#f7f7f7");
+
+        var chart109= d3.select("#svg")
+        .append("svg")
+        .attr("id", "svg602")
+        .attr("width", 3200)
+        .attr("height", 500)
+        .style("background", "#f7f7f7");
+
+        var myimage1 = chart109.append('image').attr("id","im")
+          .attr('xlink:href', 'https://i.ibb.co/n1Lb75x/images.jpg')
+          .attr("x",-180)
+          .attr("y",-10)
+          .attr('width', 1000)
+          .attr('height', 450)
+
+          var myimage2 = chart109.append('image').attr("id","im")
+            .attr('xlink:href', 'https://i.ibb.co/2KFxb4P/cuaron-jpg.webp')
+            .attr("x",580)
+            .attr("y",-10)
+            .attr('width', 800)
+            .attr('height', 450)
+
+            var myimage3 = chart109.append('image').attr("id","im")
+              .attr('xlink:href', 'https://i.ibb.co/mBvf3Qm/Latino-Actors-Who-Have-Won-Oscar-jpg.webp')
+              .attr("x",1435)
+              .attr("y",-130)
+              .attr('width', 600)
+              .attr('height', 680)
+
+                    var myimage4 = chart109.append('image').attr("id","im")
+                      .attr('xlink:href', 'https://i.ibb.co/LxzTMGw/Roma-dorada-564643-1.jpg')
+                      .attr("x",2095)
+                      .attr("y",-100)
+                      .attr('width', 700)
+                      .attr('height', 690)
+
+
+
+
+        d3.csv("barChart.csv").then(function(data)
+        {
+
+
+          data.forEach(function(element)
+          {
+
+            element.year = +element.year;
+            element.hispanic = +element.hispanic;
+
+          });
+
+          subgroup = d3.keys(data[0])
+          removed = subgroup.splice(0, 1)
+
+
+          group=d3.map(data, function(d){return(d.year)}).keys()
+
+
+          var xscale = d3.scaleBand()
+          .domain(group)
+          .range([80, 2800])
+
+          var yscale = d3.scaleLinear()
+          .domain([0, 7])
+          .range([ 1, 600]);
+
+          var yscale2 = d3.scaleLinear()
+          .domain([0, 7])
+          .range([ 600, 1]);
+
+          var xaxis = d3.axisBottom()
+          .scale(xscale);
+          xaxis.ticks(1)
+          chart.append("g")
+          .attr("transform", "translate(10,680)")
+          .call(xaxis);
+
+
+
+          var yaxis = d3.axisLeft()
+          .scale(yscale2);
+          yaxis.ticks(8)
+          chart.append("g")
+          .attr("transform", "translate(70,73)")
+          .call(yaxis);
+
+
+
+          var bars= chart.selectAll("rect").data(data)
+          bars.enter().append("rect").merge(bars)
+          .attr("x", function(d) { return xscale(d.year); })
+          .attr("y", 0)
+          .attr("width", 15)
+          .attr("height", 0)
+          .attr("fill", "black")
+          .on("mouseover", mousein)
+          .on("mouseout", mouseout)
+          chart.selectAll("text")
+          .attr("transform", "rotate(90)")
+          .attr("y", 15)
+          .attr("x", 10)
+          .style("text-anchor", "start");
+          var axis_name = chart.append("text").attr("x",1500).style("font-size", "30px").attr("y",780).text("Year")
+          var axis_name2 = chart.append("text").attr("x",240).attr("y",-10).style("font-size", "30px").attr("transform", " rotate(90)").text("Number of Winners");
+          var graph_name = chart.append("text").attr("x",100).style("font-size", "45px").style("fill", "red").attr("y",850).text("Graph for Hispanic winners")
+
+          chart.selectAll("rect")
+          .transition()
+          .duration(1200)
+          .attr("fill", "red")
+          .attr("y", function(d) { return 675-yscale(d.hispanic); })
+          .attr("height", function(d) { return yscale(d.hispanic); })
+          .delay(function(d,i){ return(i*5)})
+
+
+
+          function mouseout(d, i)
+          {
+            d3.select("#t" + d.year + d.hispanic).remove();
+            d3.select("#a" + d.year + d.hispanic).remove();
+            d3.select("#b" + d.year + d.hispanic).remove();
+            d3.select("#c" + d.year + d.hispanic).remove();
+            d3.select(this).attr('width', 15).attr("fill", "red")
+
+          }
+
+          function mousein(d, i)
+          {
+            d3.select(this).attr('width', 20).attr("fill", "blue")
+            var chart2= d3.select("#svg4")
+            var coordinates=chart2.append("text").attr('id', "t" + d.year  + d.hispanic).style("font-size", "40px")
+            .attr('x', 180)
+              .attr('y', 180)
+              .text("Year: ")
+
+
+
+                var coordinates=chart2.append("text").attr('id', "a" + d.year  + d.hispanic).style("font-size", "40px")
+                .attr('x', 280)
+                .attr('y', 180)
+                .text(function(data,i){return [d.year];})
+
+                var coordinates=chart2.append("text").attr('id', "b" + d.year  + d.hispanic).style("font-size", "40px")
+                .attr('x', 180)
+                  .attr('y', 250)
+                  .text("Number of Hispanic ethnicity winners: ")
+
+
+
+                    var coordinates=chart2.append("text").attr('id', "c" + d.year  + d.hispanic).style("font-size", "40px")
+                    .attr('x', 810)
+                    .attr('y', 250)
+                    .text(function(data,i){return [d.hispanic];})
+
+              }
+
+
+
+
+
+
+        })
+      }
+
+
+      function white() {
+        d3.select("#svg100").remove();
+        d3.select("#svg2").remove();
+        d3.select("#svg3").remove();
+        d3.select("#svg4").remove();
+        d3.select("#svg10").remove();
+        d3.select("#svg6").remove();
+        d3.select("#svg7").remove();
+    d3.select("#svg800").remove();
+
+                d3.select("#svg600").remove();
+                  d3.select("#svg601").remove();
+                    d3.select("#svg602").remove();
+
+                        d3.select("#svg604").remove();
+                          d3.select("#svg605").remove();
+                            d3.select("#svg606").remove();
+
+                            d3.select("#svg800").remove();
+                            d3.select("#svg801").remove();
+                            d3.select("#svg802").remove();
+                            d3.select("#svg803").remove();
+                            d3.select("#svg804").remove();
+
+        var chart= d3.select("#svg")
+        .append("svg")
+        .attr("id", "svg5")
+        .attr("width", 3200)
+        .attr("height", 1000)
+        .style("background", "#f7f7f7");
+
+        var chart109= d3.select("#svg")
+        .append("svg")
+        .attr("id", "svg603")
+        .attr("width", 400)
+        .attr("height", 500)
+        .style("background", "#f7f7f7");
+
+        var myimage = chart109.append('image').attr("id","im")
+          .attr('xlink:href', 'https://i.ibb.co/VVMGjxK/Screenshot-2021-04-18-at-9-09-20-PM.png')
+          .attr("x",0)
+          .attr("y",45)
+          .attr('width', 400)
+          .attr('height', 400)
+
+          d3.select("#svg603")
+          .transition()
+             .duration(6000)
+             .style("background", "#80FF00");
+
+
+        d3.csv("barChart.csv").then(function(data)
+        {
+
+
+          data.forEach(function(element)
+          {
+
+            element.year = +element.year;
+            element.white = +element.white;
+
+          });
+
+          subgroup = d3.keys(data[0])
+          removed = subgroup.splice(0, 1)
+
+
+          group=d3.map(data, function(d){return(d.year)}).keys()
+
+
+          var xscale = d3.scaleBand()
+          .domain(group)
+          .range([80, 2800])
+
+          var yscale = d3.scaleLinear()
+          .domain([0, 32])
+          .range([ 1, 600]);
+
+          var yscale2 = d3.scaleLinear()
+          .domain([0, 32])
+          .range([ 600, 1]);
+
+          var xaxis = d3.axisBottom()
+          .scale(xscale);
+          xaxis.ticks(1)
+          chart.append("g")
+          .attr("transform", "translate(10,680)")
+          .call(xaxis);
+
+
+
+          var yaxis = d3.axisLeft()
+          .scale(yscale2);
+          yaxis.ticks(15)
+          chart.append("g")
+          .attr("transform", "translate(70,73)")
+          .call(yaxis);
+
+
+
+          var bars= chart.selectAll("rect").data(data)
+          bars.enter().append("rect").merge(bars)
+          .attr("x", function(d) { return xscale(d.year); })
+          .attr("y", 0)
+          .attr("width", 15)
+          .attr("height", 0)
+          .attr("fill", "red")
+          .on("mouseover", mousein)
+          .on("mouseout", mouseout)
+          chart.selectAll("text")
+          .attr("transform", "rotate(90)")
+          .attr("y", 15)
+          .attr("x", 10)
+          .style("text-anchor", "start");
+          var axis_name = chart.append("text").attr("x",1500).style("font-size", "30px").attr("y",780).text("Year")
+          var axis_name2 = chart.append("text").attr("x",240).attr("y",-10).style("font-size", "30px").attr("transform", " rotate(90)").text("Number of Winners");
+          var graph_name = chart.append("text").attr("x",100).style("font-size", "45px").style("fill", "red").attr("y",850).text("Graph for White winners")
+
+  chart.selectAll("rect")
+  .transition()
+  .duration(1000)
+  .attr("fill", "blue")
+  .attr("y", function(d) { return 675-yscale(d.white); })
+  .attr("height", function(d) { return yscale(d.white); })
+  .delay(function(d,i){ return(i*5)})
+
+
+          function mouseout(d, i)
+          {
+            d3.select("#t" + d.year + d.white).remove();
+            d3.select("#a" + d.year + d.white).remove();
+            d3.select("#b" + d.year + d.white).remove();
+            d3.select("#c" + d.year + d.white).remove();
+            d3.select(this).attr('width', 15).attr("fill", "blue")
+
+          }
+
+          function mousein(d, i)
+          {
+            d3.select(this).attr('width', 20).attr("fill", "red")
+            var chart2= d3.select("#svg5")
+            var coordinates=chart2.append("text").attr('id', "t" + d.year  + d.white).style("font-size", "40px")
+            .attr('x', 680)
+              .attr('y', 800)
+              .text("Year: ")
+
+
+
+                var coordinates=chart2.append("text").attr('id', "a" + d.year  + d.white).style("font-size", "40px")
+                .attr('x', 780)
+                .attr('y', 800)
+                .text(function(data,i){return [d.year];})
+
+                var coordinates=chart2.append("text").attr('id', "b" + d.year  + d.white).style("font-size", "40px")
+                .attr('x', 680)
+                  .attr('y', 870)
+                  .text("Number of White ethnicity winners: ")
+
+
+
+                    var coordinates=chart2.append("text").attr('id', "c" + d.year  + d.white).style("font-size", "40px")
+                    .attr('x', 1280)
+                    .attr('y', 870)
+                    .text(function(data,i){return [d.white];})
+
+              }
+
+
+
+
+
+        })
+      }
+
+
+      function male() {
+        d3.select("#svg100").remove();
+        d3.select("#svg2").remove();
+        d3.select("#svg3").remove();
+        d3.select("#svg4").remove();
+        d3.select("#svg10").remove();
+        d3.select("#svg5").remove();
+        d3.select("#svg7").remove();
+          d3.select("#svg800").remove();
+
+                d3.select("#svg600").remove();
+                  d3.select("#svg601").remove();
+                    d3.select("#svg602").remove();
+                      d3.select("#svg603").remove();
+
+                          d3.select("#svg605").remove();
+                            d3.select("#svg606").remove();
+
+                            d3.select("#svg800").remove();
+                            d3.select("#svg801").remove();
+                            d3.select("#svg802").remove();
+                            d3.select("#svg803").remove();
+                            d3.select("#svg804").remove();
+
+
+
+
+
+        var chart= d3.select("#svg")
+        .append("svg")
+        .attr("id", "svg6")
+        .attr("width", 1400)
+        .attr("height", 4500)
+        .style("background", "#f7f7f7");
+
+         var text_explain = chart.append("text").attr("x",300).style("fill", "red").style("font-size", "30px").attr("y",40).text("<------------------------- Number of Male winners ------------------------->")
+         var text_explain2 = chart.append("text").attr("x",1335).style("fill", "red").style("font-size", "30px").attr("y",45).text("Year")
+         var text_explain2 = chart.append("text").attr("x",1365).style("fill", "red").style("font-size", "30px").attr("y",75).text("|")
+  var text_explain3 = chart.append("text").attr("x",-1375).style("fill", "red").style("font-size", "30px").attr("y",-70).attr("transform","rotate(180)").text("^")
+
+        var chart109= d3.select("#svg")
+        .append("svg")
+        .attr("id", "svg604")
+        .attr("width", 1400)
+        .attr("height", 4500)
+        .style("background", "#f7f7f7");
+        var text_explain2 = chart109.append("text").attr("x",180).style("fill", "red").style("font-size", "30px").attr("y",40).text("<------------------------- Number of Female winners -------------------------->")
+
+
+
+        d3.csv("barChart.csv").then(function(data)
+        {
+
+
+          data.forEach(function(element)
+          {
+
+            element.year = +element.year;
+            element.male = +element.male;
+            element.female = +element.female;
+
+          });
+
+          subgroup = d3.keys(data[0])
+          removed = subgroup.splice(0, 1)
+
+
+          group=d3.map(data, function(d){return(d.year)}).keys()
+
+
+          var xscale = d3.scaleBand()
+          .domain(group)
+          .range([80, 4400])
+
+          var xscale2 = d3.scaleBand()
+          .domain(group)
+          .range([4400, 80])
+
+          var yscale = d3.scaleLinear()
+          .domain([0, 30])
+          .range([ 1, 1250]);
+
+          var yscale2 = d3.scaleLinear()
+          .domain([0, 30])
+          .range([ 1250, 1]);
+
+          var yscale3 = d3.scaleLinear()
+          .domain([0, 30])
+          .range([ 1, 1250]);
+
+
+          var xaxis = d3.axisRight()
+          .scale(xscale);
+          xaxis.tickFormat(d3.format("d"))
+          xaxis.ticks(92)
+          chart.append("g")
+          .attr("class","axes")
+          .attr("transform", "translate(1380,35) ")
+          .call(xaxis)
+          .selectAll("text")
+            .attr("dx", "-1.8em")
+                    .style("font-size", "22px")
+
+
+
+          var yaxis = d3.axisTop()
+          .scale(yscale2);
+          yaxis.ticks(30)
+          chart.append("g")
+          .attr("transform", "translate(96,100)")
+          .call(yaxis)
+           .selectAll("text")
+          //  .attr("dx", "-2em")
+            .style("font-size", "22px")
+
+
+
+          var yaxis2 = d3.axisTop()
+          .scale(yscale3);
+          yaxis2.ticks(30)
+          chart109.append("g")
+          .attr("transform", "translate(5,100)")
+          .call(yaxis2)
+          .selectAll("text")
+          .style("font-size", "22px")
+
+
+
+
+                  var bars= chart.selectAll("rect").data(data)
+                  bars.enter().append("rect").merge(bars)
+                  .attr("x", function(d) { return xscale2(d.year); })
+                  .attr("y", 0)
+                  .attr("width", 15)
+                  .attr("height", 0)
+                  .attr("fill", "red")
+
+                  //.attr("transform", "translate(4000,60)")
+                 //.attr("transform", "rotate(0)")
+                  .attr('transform', 'translate(674,4500)rotate(-90)')
+
+                  .on("mouseover", mousein)
+                  .on("mouseout", mouseout)
+
+
+
+                  chart.selectAll("rect")
+                  .transition()
+                  .duration(3000)
+                  .attr("fill", "#4C88FE")
+                  .attr("y", function(d) { return 675-yscale(d.male); })
+                  .attr("height", function(d) { return yscale(d.male); })
+                  .delay(function(d,i){ return(i*8)})
+
+
+          function mouseout(d, i)
+          {
+            d3.select("#t" + d.year + d.male).remove();
+            d3.select("#a" + d.year + d.male).remove();
+            d3.select("#b" + d.year + d.male).remove();
+            d3.select("#c" + d.year + d.male).remove();
+            d3.select(this).attr('width', 15).attr("fill", "#4C88FE")
+
+          }
+
+          function mousein(d, i)
+          {
+            d3.select(this).attr('width', 20).attr("fill", "#2A37B4")
+          //  var chart2= d3.select("#svg6")
+            var coordinates=chart.append("text").attr('id', "t" + d.year  + d.male).style("font-size", "40px")
+            .attr('x', 180)
+              .attr('y', 200)
+              .text("Year: ")
+
+
+
+                var coordinates=chart.append("text").attr('id', "a" + d.year  + d.male).style("font-size", "40px")
+                .attr('x', 280)
+                .attr('y', 200)
+                .text(function(data,i){return [d.year];})
+
+                var coordinates=chart.append("text").attr('id', "b" + d.year  + d.male).style("font-size", "40px")
+                .attr('x', 180)
+                  .attr('y', 260)
+                  .text("Number of male winners: ")
+
+
+
+                    var coordinates=chart.append("text").attr('id', "c" + d.year  + d.male).style("font-size", "40px")
+                    .attr('x', 600)
+                    .attr('y', 260)
+                    .text(function(data,i){return [d.male];})
+
+              }
+
+
+
+
+
+  var xscale10 = d3.scaleBand()
+  .domain(group)
+  .range([80, 4400])
+
+  var yscale10 = d3.scaleLinear()
+  .domain([0, 30])
+  .range([ 1, 1250]);
+
+
+              var bars2= chart109.selectAll("rect").data(data)
+              bars2.enter().append("rect").merge(bars2)
+              .attr("x", function(d) { return xscale10(d.year); })
+              .attr("y", 0)
+              .attr("width", 15)
+              .attr("height", 0)
+
+
+              .attr("fill", "red")
+              .attr('transform', 'translate(680,51)rotate(90)')
+
+             .on("mouseover", mousein2)
+              .on("mouseout", mouseout2)
+
+
+            //  var axis_name = chart.append("text").attr("x",1500).style("font-size", "30px").attr("y",780).text("Year")
+              //var axis_name2 = chart.append("text").attr("x",240).attr("y",-10).style("font-size", "30px").attr("transform", " rotate(90)").text("Number of Winners");
+              //var graph_name = chart.append("text").attr("x",100).style("font-size", "45px").style("fill", "red").attr("y",850).text("Graph for Female winners")
+
+              chart109.selectAll("rect")
+              .transition()
+              .duration(3000)
+              .attr("fill", "#F364FF")
+              .attr("y", function(d) { return 675-yscale10(d.female); })
+              .attr("height", function(d) { return yscale10(d.female); })
+              .delay(function(d,i){ return(i*8)})
+
+
+
+              function mouseout2(d, i)
+              {
+                d3.select("#t" + d.year + d.female).remove();
+                d3.select("#a" + d.year + d.female).remove();
+                d3.select("#b" + d.year + d.female).remove();
+                d3.select("#c" + d.year + d.female).remove();
+                d3.select(this).attr('width', 15).attr("fill", "#F364FF")
+
+              }
+
+              function mousein2(d, i)
+              {
+                d3.select(this).attr('width', 20).attr("fill", "#CB02B3")
+                var chart2= d3.select("#svg604")
+                var coordinates=chart2.append("text").attr('id', "t" + d.year  + d.female).style("font-size", "40px")
+                .attr('x', 280)
+                  .attr('y', 200)
+                  .text("Year: ")
+
+
+
+                    var coordinates=chart2.append("text").attr('id', "a" + d.year  + d.female).style("font-size", "40px")
+                    .attr('x', 380)
+                    .attr('y', 200)
+                    .text(function(data,i){return [d.year];})
+
+                    var coordinates=chart2.append("text").attr('id', "b" + d.year  + d.female).style("font-size", "40px")
+                    .attr('x', 280)
+                      .attr('y', 270)
+                      .text("Number of female winners: ")
+
+
+
+                        var coordinates=chart2.append("text").attr('id', "c" + d.year  + d.female).style("font-size", "40px")
+                        .attr('x', 730)
+                        .attr('y', 270)
+                        .text(function(data,i){return [d.female];})
+
+                  }
+
+
+
+
+
+
+
+
+
+
+        })
+      }
+
+
+  </script>
+
+  </body>
+  </html>
